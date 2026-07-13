@@ -7,7 +7,7 @@ import java.util.Scanner;
 	@Override
     public String toString() {
         // 화면에 출력하고 싶은 모양대로 글자를 조립해서 return 해줍니다.
-        return "커피 이름: " + name + " / 가격: " + price + "원";
+        return "커피 이름: " + menu + " / 사이즈: " + size +"\n";}
 }
 
 public class cafeEx {
@@ -15,6 +15,8 @@ public class cafeEx {
 	static Scanner input=new Scanner(System.in);
 	static ArrayList<ChMenu> coffeeList=new ArrayList<>();
 	static ChMenu coffee=new ChMenu();
+	static int totalPrice=0;
+	
 	public static int Coffee() {
 		int priceCoffee=0;
 		
@@ -23,6 +25,7 @@ public class cafeEx {
 		System.out.println("2.카페모카");
 		System.out.println("3.카페라떼");
 		System.out.println("4.그린티라떼");
+		
 		
 		int choiceCoffe=input.nextInt();
 		
@@ -41,6 +44,7 @@ public class cafeEx {
 		}else {
 			System.out.println("없는메뉴입니다");
 		}
+		
 		if (coffee.menu!="") {
 			coffeeList.add(coffee);
 		}
@@ -77,10 +81,10 @@ public class cafeEx {
 	}
 	
 	public static void price(int a, int b) {
-		int totalPrice=a+b;
-		for(coffeeO:coffeeList) {
-			System.out.println(coffeeO);
-		}
+		totalPrice+=(a+b);
+		
+			System.out.println(coffeeList);
+		
 		
 		System.out.println("총금액은: "+totalPrice+"원 입니다.");
 		
@@ -89,9 +93,19 @@ public class cafeEx {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		
+		while(true) {
 		int a=Coffee();
 		int b=size();
 		price(a,b);
+		System.out.println("결제하려면 0번");
+		System.out.println("메뉴추가는 그 외 번호");
+		int exit= input.nextInt();
+		if(exit==0) {
+			break;
+		}
+		}
+		
 
 	}
 
